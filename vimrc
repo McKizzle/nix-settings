@@ -14,8 +14,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
-Plugin 'rust-lang/rust.vim'
 Plugin 'vim-scripts/LargeFile'
+Plugin 'racer-rust/vim-racer'
+Plugin 'rust-lang/rust.vim'
 
 " Enable plugins
 call vundle#end()            " required
@@ -25,6 +26,12 @@ filetype plugin indent on    " This is required by vundle.
 
 " MY CUSTOM CONFIG
 syntax on
+
+" Racer configuration
+set hidden
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+
 
 set number	" Show line numbers
 " set nowrap	" Wrap lines
