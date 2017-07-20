@@ -1,8 +1,24 @@
+#!/usr/bin/env sh
+
 # Copies all of the relvant files and configures the current user account. 
-
 # Setup Vundle and the default .vimrc configuration.
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp vimrc ~/.vimrc
+if [ -d $HOME/.vim/bundle/Vundle.vim ]; then 
+    ls -lA; 
+else 
+    echo "Vundle does not exist. Cloning to the .vim directory."; 
+    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi;
+
+if [ -f vimrc ]; then
+    VIMRC=$(readlink -f vimrc);
+    ln -s "$VIMRC" "$HOME/.vimrc"
+else 
+    echo "Cannot find the vimrc file. Aborting configuration";
+    exit 1;
+fi;
+
+mkdir -p "$HOME/.vim-tmp/swap/"
+mkdir -p "$HOME/.vim-tmp/backup/"
+mkdir -p "$HOME/.vim-tmp/undo/"
+
 vim +PluginInstall +qall
-
-
