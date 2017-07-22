@@ -17,6 +17,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/LargeFile'
 Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
+Plugin 'pangloss/vim-javascript'
 
 " Enable plugins
 call vundle#end()            " required
@@ -32,6 +33,8 @@ set hidden
 let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 
+" Reactjs Configuration
+let g:jsx_ext_required = 0
 
 set number	" Show line numbers
 " set nowrap	" Wrap lines
@@ -45,13 +48,17 @@ set hlsearch	" Highlight all search results
 set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
- 
+
 set autoindent	" Auto-indent new lines
 set shiftwidth=4	" Number of auto-indent spaces
 set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
 set softtabstop=4	" Number of spaces per Tab
 set expandtab
+
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab autoindent
+autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " Disable Cursor Navigation
 inoremap  <Up>     <NOP>
@@ -77,4 +84,3 @@ set listchars=tab:⟾▫︎
 "" TagBar remapping
 nnoremap <silent> <F9> :TagbarToggle<CR>
 nnoremap <silent> <F8> :NERDTreeToggle<CR>
-
