@@ -56,7 +56,7 @@ set smarttab	" Enable smart-tabs
 set softtabstop=4	" Number of spaces per Tab
 set expandtab
 
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab autoindent
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab autoindent smartindent smarttab
 autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
