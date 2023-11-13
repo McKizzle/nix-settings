@@ -71,9 +71,11 @@ noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
 " Change default vim alt files location. 
-set dir=~/.vim-tmp/swap/
-set backupdir=~/.vim-tmp/backup/
-set undodir=~/.vim-tmp/undo/
+if $XDG_DATA_HOME
+    set dir=$XDG_DATA_HOME/vim-tmp/swap/
+    set backupdir=$XDG_DATA_HOME/vim-tmp/backup/
+    set undodir=$XDG_DATA_HOME/vim-tmp/undo/
+endif
 
 set colorcolumn=135
 

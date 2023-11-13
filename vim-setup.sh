@@ -14,11 +14,18 @@ if [ -f vimrc ]; then
     ln -s "$VIMRC" "$HOME/.vimrc"
 else 
     echo "Cannot find the vimrc file. Aborting configuration";
-    exit 1;
+    exit 1
 fi;
 
-mkdir -p "$HOME/.vim-tmp/swap/"
-mkdir -p "$HOME/.vim-tmp/backup/"
-mkdir -p "$HOME/.vim-tmp/undo/"
+echo $XDG_DATA_HOME
+if [ -n "$XDG_DATA_HOME" ]; then
+    mkdir -p "$XDG_DATA_HOME/vim-tmp/swap/"
+    mkdir -p "$XDG_DATA_HOME/vim-tmp/backup/"
+    mkdir -p "$XDG_DATA_HOME/vim-tmp/undo/"
+else
+    echo "The env variable XDG_DATA_HOME has not been found. Aborting the operation." 
+    exit 1
+fi;
 
 vim +PluginInstall +qall
+
