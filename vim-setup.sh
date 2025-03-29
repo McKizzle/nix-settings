@@ -17,11 +17,11 @@ else
     exit 1
 fi;
 
-echo $XDG_DATA_HOME
-if [ -n "$XDG_DATA_HOME" ]; then
-    mkdir -p "$XDG_DATA_HOME/vim-tmp/swap/"
-    mkdir -p "$XDG_DATA_HOME/vim-tmp/backup/"
-    mkdir -p "$XDG_DATA_HOME/vim-tmp/undo/"
+DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+if [ -n "$DATA_HOME" ]; then
+    mkdir -p "$DATA_HOME/vim-tmp/swap/"
+    mkdir -p "$DATA_HOME/vim-tmp/backup/"
+    mkdir -p "$DATA_HOME/vim-tmp/undo/"
 else
     echo "The env variable XDG_DATA_HOME has not been found. Aborting the operation." 
     exit 1
